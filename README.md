@@ -9,3 +9,11 @@ Tool detector module scans a directory for python script and checks for method p
 
     - Class based tool methods
     - async methods
+
+## ManagedMCP
+ManagedMCP is extension of FastMCP, with ability to scan tools directory and load them as tools automatically.
+
+##### TODO
+    - support resources
+    - support prompts
+    - Support directory wise server creation instead of one bloated server creation

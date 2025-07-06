@@ -5,8 +5,9 @@ import logging
 import os
 from pathlib import Path
 
-from .util import path_in_context
 from mcp.server.fastmcp.tools import ToolManager
+
+from .util import path_in_context
 
 logging.basicConfig()
 logger  = logging.getLogger(__name__)

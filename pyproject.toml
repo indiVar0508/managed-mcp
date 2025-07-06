@@ -7,7 +7,9 @@ authors = [
     { name = "Indivar Mishra", email = "indimishra@gmail.com" }
 ]
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "mcp>=1.10.1",
+]
 
 [project.scripts]
 managed-mcp = "managed_mcp:main"

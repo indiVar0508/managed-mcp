@@ -19,6 +19,15 @@ managed-mcp = "managed_mcp.cli:cli"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build]
+exclude = [
+    "example",
+    ".roo",
+    ".vscode",
+    "tests",
+    "ruff.toml"
+]
+
 [dependency-groups]
 dev = [
     "pytest-cov>=6.2.1",

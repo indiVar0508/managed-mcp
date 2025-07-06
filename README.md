@@ -17,3 +17,16 @@ ManagedMCP is extension of FastMCP, with ability to scan tools directory and loa
     - support resources
     - support prompts
     - Support directory wise server creation instead of one bloated server creation
+
+## CLI
+Instantiate a managed-mcp server by running following command 
+
+```bash
+uv run managed-mcp example # replace example with tool directory path
+```
+
+##### TODO
+    - support plugins
+
+## Integrate with coding assist tools
+refer .roo/mcp.json to integrate with roo cline.

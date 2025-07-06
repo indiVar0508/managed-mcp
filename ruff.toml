@@ -27,7 +27,8 @@ exclude = [
     "site-packages",
     "venv",
     "tests",
-    "src/managed_mcp/__init__.py"
+    "src/managed_mcp/__init__.py",
+    "*temp.py*"
 ]
 
 # Same as Black.

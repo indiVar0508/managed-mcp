@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "managed-mcp": {
+      "command": ".venv/bin/managed-mcp",
+      "args": [
+        "example"
+      ],
+      "env": {},
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}

@@ -1,7 +1,7 @@
 [project]
 name = "managed-mcp"
 version = "0.1.0"
-description = "Add your description here"
+description = "Managed MCP provides a standardized approach for building and deploying MCP servers"
 readme = "README.md"
 authors = [
     { name = "Indivar Mishra", email = "indimishra@gmail.com" }
@@ -15,3 +15,15 @@ managed-mcp = "managed_mcp:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest-cov>=6.2.1",
+    "pytest>=8.4.1",
+    "ruff>=0.12.2",
+]
+
+[tool.coverage.run]
+source = [
+  "src"
+]

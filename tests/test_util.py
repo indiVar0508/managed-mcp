@@ -1,5 +1,7 @@
 import sys
+
 from managed_mcp.util import path_in_context
+
 
 def test_path_in_context():
     original_sys_path = sys.path.copy()

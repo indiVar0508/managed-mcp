@@ -1,9 +1,12 @@
 import os
 import re
-import pytest
 import tempfile
 from pathlib import Path
+
+import pytest
+
 from managed_mcp.tool_manager import ToolManager
+
 
 def test_detect_tools_valid_directory(tmp_path):
     # Create Python files with functions

@@ -1,10 +1,12 @@
+"""ToolManager is responsible for detecting and loading tool functions from a specified directory."""
+
 import ast
-import os
 import importlib
 import logging
+import os
 from pathlib import Path
-from .util import path_in_context
 
+from .util import path_in_context
 
 logging.basicConfig()
 logger  = logging.getLogger(__name__)
@@ -13,12 +15,32 @@ logger.setLevel(logging.DEBUG)
 class ToolManager:
     """
     ToolManager is responsible for detecting and loading tool functions from a specified directory.
+
     Tool functions are identified by their names starting with 'tool_'.
     It scans Python files in the directory and its subdirectories, collects tool functions,
     and provides a way to load them dynamically.
+
+    Attributes:
+        tool_dir (Path): The directory where tool functions are located.
+        live_tools (dict[str, callable]): A dictionary mapping tool function names to their callable objects.
+
+    Methods:
+        detect_tools(tool_dir: str) -> dict[str, list[str]]:
+            Scans the specified directory for Python files and detects functions whose names start with 'tool_'.
+        load_tools():
+            Loads tool functions from the specified directory and stores them in the `live_tools` dictionary.
+        load() -> dict[str, callable]:
+            Loads the tools and returns a dictionary of tool function names to their callable objects.
+
+    Example:
+        >>> from managed_mcp.tool_manager import ToolManager
+        >>> tool_manager = ToolManager("/path/to/tools")
+        >>> tool_manager.load()  # Loads all tool functions
+        >>> tool_functions = tool_manager.live_tools  # Access loaded tool functions.
+
     """
 
-    def __init__(self, tool_dir: str):
+    def __init__(self, tool_dir: str):  # noqa: D107
         self.tool_dir = Path(tool_dir)
         if not self.tool_dir.is_dir():
             logger.error(f"Invalid tool directory: {self.tool_dir}")
@@ -29,10 +51,16 @@ class ToolManager:
     @classmethod
     def detect_tools(cls, tool_dir: str) -> dict[str, list[str]]:
         """
-        Scans the specified directory recursively for Python files and detects functions
-        whose names start with 'tool_'.
-        """
+        Scan the specified directory recursively for Python files and detects functions, whose names start with 'tool_'.
 
+        Args:
+            tool_dir (str): The directory to scan for tool functions.
+
+        Returns:
+            dict[str, list[str]]: A dictionary where keys are module names (relative to the tool directory)
+            and values are lists of function names that start with 'tool_'.
+
+        """
         tool_dir = Path(tool_dir)
         if not tool_dir.is_dir():
             logger.error(f"Invalid tool directory: {tool_dir}")
@@ -61,7 +89,8 @@ class ToolManager:
 
     def load_tools(self):
         """
-        Loads tool functions from the specified directory.
+        Load tool functions from the specified directory.
+
         Only functions whose names start with 'tool_' are loaded.
         The functions are stored in a dictionary where the keys are the function names
         and the values are lists of function objects.
@@ -86,7 +115,8 @@ class ToolManager:
 
     def load(self) -> dict[str, callable]:
         """
-        Loads the tools and returns a dictionary of tool function names to their callable objects.
+        Load the tools and returns a dictionary of tool function names to their callable objects.
+
         This method is a convenience method that calls `load_tools` and returns the loaded tools.
         """
         # TODO: support hooks
